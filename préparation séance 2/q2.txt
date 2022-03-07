@@ -1,0 +1,4 @@
+2. Il faut utiliser la méthode hasMany() et hasOne()
+
+Une annonce peut avoir plusieurs Photos = hasMany()
+Une photo appartient à une seule annonce = hasOne()
