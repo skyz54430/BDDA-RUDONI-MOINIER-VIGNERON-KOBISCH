@@ -1,0 +1,4 @@
+Categorie( id, nom, descr)
+Annonce (id, titre, date, texte, #idCateg)
+Photo( id, file, date, taille_octet, #idAnnonce)
+LienPA(#idAnnonce, #idPhoto)
