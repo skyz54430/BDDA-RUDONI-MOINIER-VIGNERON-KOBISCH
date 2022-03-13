@@ -10,14 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 class Categorie extends Model
 {
 
-    protected $table = 'categorie';
-    protected $primaryKey = 'nom';
-    public $incrementing = true;
-    public $timestamps = false;
+    Public $table = “Categorie”;
+    Public $primaryKey = “id”;
 
-    public function categorie()
-    {
-        return $this->belongsToMany('./Annonce');
+    Public function annonces() {
+	    Return $this->belongsToMany(‘Annonce’, ‘categLieAnnonce’, ‘id_categ’, ‘id_annonce’)
     }
 
 }

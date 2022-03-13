@@ -10,14 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 class Annonce extends Model
 {
 
-    protected $table = 'annonce';
-    protected $primaryKey = 'titre';
-    public $incrementing = true;
-    public $timestamps = false;
+    Public $table = “annonce”;
+	Public $primaryKey = «id»;
 
-    public function annonce()
-    {
-        return $this->hasMany('./Photo');
+	Public function photos() {
+		Return $this->hasMany('namespace\models\Photo’, 'id')
     }
 
 }

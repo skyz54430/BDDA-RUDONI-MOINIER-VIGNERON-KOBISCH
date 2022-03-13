@@ -1,0 +1,84 @@
+
+2. Il faut utiliser la méthode hasMany() et hasOne()
+
+Une annonce peut avoir plusieurs Photos = hasMany()
+Une photo appartient à une seule annonce = hasOne()
+
+
+3.
+
+
+// SQL question 3.1
+select * from photo
+inner join annonce.id = photo.id
+where annonce.id = 22;
+
+// SQL question 3.2
+select * from photo
+inner join annonce.id = photo.id
+where annonce.id = 22 and photo.taille_octet > 100000;
+
+// SQL question 3.3
+select annonce.titre, count(photo.id) as count 
+from annonce 
+inner join annonce.id = photo.id
+where count > 3;
+
+// SQL question 3.4
+select annonce.titre
+from annonce 
+inner join annonce.id = photo.id
+where photo.taille_octet > 100000;
+
+
+4. 
+insert into Photo (id, titre, date, texte, idAnnonce) 
+values (150, 'photoAnnonce22', 07/03/2022, 'ceci est une photo', 22);
+
+5.
+alter table Categorie 
+ADD nom_colonne type_donnees
+
+--Q1
+
+$ann = Annonce ::where(«id», «=», 22)->photos()->get();
+
+--Q2
+
+$photos = Annonce::where(“id”, “=”, “22”)->photos()->where(“taille_octet”, “>”, 10000)->get();
+
+--Q3
+
+$annonces = Annonce::all()->photos->where(“count()”, “>”, 3)->get();
+$annonces = Annonce::all();
+Foreach($annonces as $ann) {
+	If ($ann->photos()->count()>3){
+	Echo $ann->id
+}
+}
+$annonces = Annonce::has(‘photos, ‘>’, 3)->get();
+
+
+--Q4
+
+$annonces = Annonce::all()->photos->where(“taille_octet”, “>”, 10000)
+
+$photo = new Photo();
+$photo->id = 2;
+$photo->file = UnFichier;
+$photo->date = uneDate ;
+$photo->taille_octet = uneTaille;
+$photo->idPhoto = annonce;
+$photo->save() ;
+
+--Q5
+
+$annLie42 = new CategLieAnn() ;
+$annLie42->idCateg = 42 ;
+$annLie42->idPhoto = 22 ;
+$annLie42->save() ;
+
+$annLie73 = new CategLieAnn() ;
+$annLie73->idCateg = 73 ;
+$annLie73->idPhoto = 22 ;
+
