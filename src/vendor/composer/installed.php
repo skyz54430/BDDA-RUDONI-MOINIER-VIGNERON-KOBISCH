@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'bd4b14a85388840567b3259fe91da2e78067b178',
+        'reference' => '238524a2dff06ea462f5188c01512661b66e1f38',
         'name' => 'iutnc-pgka/projet_bdd_s4_2022',
         'dev' => true,
     ),
@@ -79,7 +79,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'bd4b14a85388840567b3259fe91da2e78067b178',
+            'reference' => '238524a2dff06ea462f5188c01512661b66e1f38',
             'dev_requirement' => false,
         ),
         'nesbot/carbon' => array(
