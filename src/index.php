@@ -36,7 +36,7 @@ foreach ($gamesMario as $game) {
 }
 
 //Q5 : lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500)
-print_r("Q5 : \n\n");
+/*print_r("Q5 : \n\n");
 try {
     $page = readline("Quelle page souhaitez-vous ?");
     $allGames = Jeu::where('id', '>', 500 * ($page - 1))->limit(500);
@@ -45,7 +45,8 @@ try {
     }
 }catch (Throwable $e) {
     print_r("\t ERREUR \n");
-}
+}*/
+
 
 //Q1 : • afficher (name , deck) les personnages du jeu 12342
 print_r("Q1 : \n\n");
