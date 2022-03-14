@@ -3,7 +3,7 @@
 
 declare(strict_types=1);
 
-namespace applibd\models;
+namespace gamepedia\models;
 
 class Theme extends \Illuminate\Database\Eloquent\Model
 {
@@ -12,6 +12,6 @@ class Theme extends \Illuminate\Database\Eloquent\Model
     public $timestamps = false;
 
     public function theme() {
-        return $this->belongsToMany('applibd\models\Game', 'game' , 'theme_id', 'game_id');
+        return $this->belongsToMany('gamepedia\models\Game', 'game' , 'theme_id', 'game_id');
     }
 }

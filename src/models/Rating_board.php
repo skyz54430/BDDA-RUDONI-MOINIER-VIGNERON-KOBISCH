@@ -3,7 +3,7 @@
 
 declare(strict_types=1);
 
-namespace applibd\models;
+namespace gamepedia\models;
 
 class Rating_board extends \Illuminate\Database\Eloquent\Model
 {
@@ -12,6 +12,6 @@ class Rating_board extends \Illuminate\Database\Eloquent\Model
     public $timestamps = false;
 
     public function rating_boardTogame_rating() {
-        return $this->hasMany('applibd\models\Game_rating', 'id');
+        return $this->hasMany('gamepedia\models\Game_rating', 'id');
     }
 }

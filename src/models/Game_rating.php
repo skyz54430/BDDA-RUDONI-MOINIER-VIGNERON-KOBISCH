@@ -1,6 +1,6 @@
 <?php
 
-namespace applibd\models;
+namespace gamepedia\models;
 
 class Game_rating extends \Illuminate\Database\Eloquent\Model
 {
@@ -9,10 +9,10 @@ class Game_rating extends \Illuminate\Database\Eloquent\Model
 	public $timestamps = false;
 
 	public function original_game_ratings() {
-		return $this->belongsToMany('applibd\models\Game', 'game2rating' , 'rating_id', 'game_id');
+		return $this->belongsToMany('gamepedia\models\Game', 'game2rating' , 'rating_id', 'game_id');
 	}
 
     public function game_ratingTorating_board() {
-        return $this->belongsTo('applibd\models\Rating_board', 'rating_board_id');
+        return $this->belongsTo('gamepedia\models\Rating_board', 'rating_board_id');
     }
 }

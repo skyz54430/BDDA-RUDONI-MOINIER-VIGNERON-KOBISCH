@@ -3,7 +3,7 @@
 
 declare(strict_types=1);
 
-namespace applibd\models;
+namespace gamepedia\models;
 
 class Game_developers extends \Illuminate\Database\Eloquent\Model
 {

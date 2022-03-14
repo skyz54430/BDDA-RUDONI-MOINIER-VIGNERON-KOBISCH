@@ -1,6 +1,6 @@
 <?php
 
-namespace applibd\models;
+namespace gamepedia\models;
 
 class Game2platform extends \Illuminate\Database\Eloquent\Model
 {

@@ -3,7 +3,7 @@
 
 declare(strict_types=1);
 
-namespace applibd\models;
+namespace gamepedia\models;
 
 class Platform extends \Illuminate\Database\Eloquent\Model
 {
@@ -12,10 +12,10 @@ class Platform extends \Illuminate\Database\Eloquent\Model
     public $timestamps = false;
 
     public function platfrom_producer() {
-        return $this->belongsToMany('applibd\models\Company', 'platform' , 'platform_id', 'company_id');
+        return $this->belongsToMany('gamepedia\models\Company', 'platform' , 'platform_id', 'company_id');
     }
     public function platfrom_game() {
-        return $this->belongsToMany('applibd\models\Game', 'platform' , 'platform_id', 'game_id');
+        return $this->belongsToMany('gamepedia\models\Game', 'platform' , 'platform_id', 'game_id');
     }
 
 

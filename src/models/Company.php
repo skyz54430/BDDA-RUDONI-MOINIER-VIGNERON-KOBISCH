@@ -3,7 +3,7 @@
 
 declare(strict_types=1);
 
-namespace applibd\models;
+namespace gamepedia\models;
 
 class Company extends \Illuminate\Database\Eloquent\Model
 {
@@ -13,14 +13,14 @@ class Company extends \Illuminate\Database\Eloquent\Model
 
 
     public function jeuxDevs(){
-        return $this->belongsToMany('applibd\models\Game', 'game_developpers', 'comp_id', 'game_id');
+        return $this->belongsToMany('gamepedia\models\Game', 'game_developpers', 'comp_id', 'game_id');
     }
 
     public function jeuxPublies() {
-        return $this->belongsToMany('applibd\models\Game', 'game_publishers', 'comp_id', 'game_id');
+        return $this->belongsToMany('gamepedia\models\Game', 'game_publishers', 'comp_id', 'game_id');
     }
 
     public function producer(){
-        return $this->belongsToMany('applibd\models\Game', 'Platform', 'comp_id', 'platform_id');
+        return $this->belongsToMany('gamepedia\models\Game', 'Platform', 'comp_id', 'platform_id');
     }
 }
