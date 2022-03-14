@@ -35,7 +35,7 @@ foreach ($gamesMario as $game) {
     print_r("\t" . $game->id . " : " . $game->name . "\n");
 }
 
-//Q5 : lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500)
+/*//Q5 : lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500)
 print_r("Q5 : \n\n");
 try {
     $page = readline("Quelle page souhaitez-vous ?");
@@ -45,13 +45,13 @@ try {
     }
 }catch (Throwable $e) {
     print_r("\t ERREUR \n");
-}
+}*/
 
 
 
 //Q1 : • afficher (name , deck) les personnages du jeu 12342
 print_r("Q1 : \n\n");
-$jeu = Game::find(12342);
+$jeu = Jeu::find(12342);
 foreach ($jeu->hasCharacters as $c){
     echo $c->name . ", " . $c->deck . " \n";
 }
