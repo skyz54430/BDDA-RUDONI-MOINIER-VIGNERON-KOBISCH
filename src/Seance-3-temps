@@ -1,0 +1,114 @@
+<?php
+declare(strict_types=1);
+require('vendor/autoload.php');
+
+header("Access-Control-Allow-Origin: *");
+
+use gamepedia\models\Company;
+use gamepedia\models\Game_rating;
+use gamepedia\models\Genre;
+use illuminate\database\Capsule\Manager as DB;
+use gamepedia\models\AddConf;
+use gamepedia\models\Game;
+use gamepedia\models\Platform;
+
+$db = new DB();
+$db->addConnection( parse_ini_file('../src/conf/conf.ini'));
+$db->setAsGlobal();
+$db->bootEloquent();
+
+
+//Q1 : Temps pour lister l'ensemble des jeux :
+
+$tDebut = microtime(true);
+$jeux = Game::all();
+$tFin = microtime(true);
+//2.7 secs
+echo "Temps pour récupérer tous les jeux : " . ($tFin - $tDebut) . " secondes !\n";
+
+//Temps pour liser les jeux dont le nom contient Mario :
+//1.6 secs
+$tDebut = microtime(true);
+$jeux = Game::where('name', 'like', '%Mario%')->get();
+$tFin = microtime(true);
+
+echo "Temps pour récupérer tous les jeux dont le nom contient Mario : " . ($tFin - $tDebut) . " secondes !\n";
+
+//Temps pour liser les jeux dont le nom commence par Mario :
+//2.9 secs
+$tDebut = microtime(true);
+$jeux = Game::where('name', 'like', 'Mario%')->get();
+$tFin = microtime(true);
+
+echo "Temps pour récupérer tous les jeux dont le nom commence par Mario : " . ($tFin - $tDebut) . " secondes !\n";
+
+
+//Temps pour les jeux dont le nom débute par Mario et le rating inital contient 3+
+//2.5 secs
+$tDebut = microtime(true);
+$jeux = Game::where('name', 'like', 'Mario%')->whereHas('gameRating', function($q){
+    $q->where('name','like','%3+%');
+})->get();
+$tFin = microtime(true);
+
+echo "Temps pour récupérer tous les jeux dont le nom commence par Mario et le rating inital contient 3+ : " . ($tFin - $tDebut) . " secondes !\n";
+
+
+//Q2 : lister les jeux dont le nom débute par '<valeur'>
+//2.8 secs
+$tDebut = microtime(true);
+$jeux = Game::where('name', 'like', 'M%')->get();
+$tFin = microtime(true);
+
+echo "Temps pour récupérer tous les jeux dont le nom commence par M : " . ($tFin - $tDebut) . " secondes !\n";
+//3.5 secs
+$tDebut = microtime(true);
+$jeux = Game::where('name', 'like', 'T%')->get();
+$tFin = microtime(true);
+
+echo "Temps pour récupérer tous les jeux dont le nom commence par T : " . ($tFin - $tDebut) . " secondes !\n";
+//3.7 secs
+$tDebut = microtime(true);
+$jeux = Game::where('name', 'like', 'S%')->get();
+$tFin = microtime(true);
+
+echo "Temps pour récupérer tous les jeux dont le nom commence par S : " . ($tFin - $tDebut) . " secondes !\n";
+
+//Avec l'index
+$tDebut = microtime(true);
+$jeux = Game::where('name', 'like', '%P%')->get();
+$tFin = microtime(true);
+//1.6 secs
+echo "Temps pour récupérer tous les jeux dont le nom commence par P : " . ($tFin - $tDebut) . " secondes !\n";
+//1.3 secs
+$tDebut = microtime(true);
+$jeux = Game::where('name', 'like', '%R%')->get();
+$tFin = microtime(true);
+
+echo "Temps pour récupérer tous les jeux dont le nom commence par R : " . ($tFin - $tDebut) . " secondes !\n";
+//1.0 secs
+$tDebut = microtime(true);
+$jeux = Game::where('name', 'like', '%W%')->get();
+$tFin = microtime(true);
+
+echo "Temps pour récupérer tous les jeux dont le nom commence par W : " . ($tFin - $tDebut) . " secondes !\n";
+
+
+//Liste des compagnies d'un pays(location_country)
+//0.2 secs
+$tDebut = microtime(true);
+$comps = Company::where('location_country', '=', 'USA')->get();
+$tFin = microtime(true);
+
+echo "Temps pour récupérer tous les companies des USA sans index: " . ($tFin - $tDebut) . " secondes !\n";
+
+
+
+//Liste des compagnies d'un pays(location_country)
+//0.02 secs
+$tDebut = microtime(true);
+$comps = Company::where('location_country', '=', 'Germany')->get();
+$tFin = microtime(true);
+
+echo "Temps pour récupérer tous les companies de l'Allemagne avec index: " . ($tFin - $tDebut) . " secondes !\n";
+

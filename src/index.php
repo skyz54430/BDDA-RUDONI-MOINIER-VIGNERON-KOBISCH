@@ -6,7 +6,7 @@ use gamepedia\models\{Game, Company, Platform, Genre, Game_rating};
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 Eloquent::start(__DIR__ . DIRECTORY_SEPARATOR . 'conf' . DIRECTORY_SEPARATOR . 'conf.ini');
-
+/*
 //Q1 : lister les jeux dont le nom contient 'Mario'
 print_r("Q1 : \n");
 $gamesMario = game::where('name', 'LIKE', '%Mario%')->get();
@@ -35,7 +35,7 @@ foreach ($gamesMario as $game) {
     print_r("\t" . $game->id . " : " . $game->name . "\n");
 }
 
-/*//Q5 : lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500)
+//Q5 : lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500)
 print_r("Q5 : \n\n");
 try {
     $page = readline("Quelle page souhaitez-vous ?");
@@ -45,7 +45,7 @@ try {
     }
 }catch (Throwable $e) {
     print_r("\t ERREUR \n");
-}*/
+}
 
 
 
@@ -149,3 +149,17 @@ $jeu1->genres()->save($nvGenre);
 
 $jeu2 = Game::find(345);
 $jeu1->genres()->save($nvGenre);
+
+*/
+/* Séance 3 */
+
+//1. lister l'ensemble des jeux,
+print_r("Q1 : \n");
+$games = game::all()->get();
+foreach ($games as $game) {
+    print_r("\t" . $game->name . "\n");
+}
+
+//2. lister les jeux dont le nom contient 'Mario'
+//3. afficher les personnages des jeux dont le nom débute par 'Mario'
+//4. les jeux dont le nom débute par 'Mario' et dont le rating initial contient '3+'
